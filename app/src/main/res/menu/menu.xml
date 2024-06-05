@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="always|withText"
+        android:orderInCategory="2"/>
+    <item
+        android:id="@+id/sports"
+        android:title="Sports"
+        android:icon="@drawable/ic_sports"
+        app:showAsAction="always|withText"
+        android:orderInCategory="0"/>
+    <item
+        android:id="@+id/buisness"
+        android:title="Buisness"
+        android:icon="@drawable/ic_buisness"
+        app:showAsAction="always|withText"
+        android:orderInCategory="1"/>
+    <item
+        android:id="@+id/science"
+        android:title="Science"
+        android:icon="@drawable/ic_science"
+        app:showAsAction="always|withText"
+        android:orderInCategory="3"/>
+    <item
+        android:id="@+id/entertainment"
+        android:title="Entertainment"
+        android:icon="@drawable/ic_entertainment"
+        app:showAsAction="always|withText"
+        android:orderInCategory="4"/>
+
+</menu>
