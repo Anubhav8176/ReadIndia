@@ -21,7 +21,7 @@ class SportsFragment : Fragment(), NewsAdapter.onItemClicked {
         val view = inflater.inflate(R.layout.fragment_sports, container, false)
 
         //Adding the url
-        val url = "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=e3f69fc7d62142a3ae77afd3a0d070c5"
+        val url = "https://newsdata.io/api/1/latest?apikey=pub_201840ff62d175f70208810c2460569221e50&q=sports"
 
 
         val recyclerView: RecyclerView = view.findViewById<RecyclerView>(R.id.sportsRecyclerView)
@@ -42,15 +42,15 @@ class SportsFragment : Fragment(), NewsAdapter.onItemClicked {
             Request.Method.GET, apiUrl,
             null,
             { response ->
-                val newsItemArray = response.getJSONArray("articles")
+                val newsItemArray = response.getJSONArray("results")
                 val newsItem = ArrayList<News>()
-                Log.i("Is it okay?", "Yes the app is getting response.")
                 for (i in 0 until newsItemArray.length()) {
                     val newsjsonObject = newsItemArray.getJSONObject(i)
                     val news = News(
                         newsjsonObject.getString("title"),
-                        newsjsonObject.getString("url"),
-                        newsjsonObject.getString("urlToImage")
+                        newsjsonObject.getString("link"),
+                        newsjsonObject.getString("image_url"),
+                        newsjsonObject.getString("source_name")
                     )
                     newsItem.add(news)
                 }
@@ -63,7 +63,8 @@ class SportsFragment : Fragment(), NewsAdapter.onItemClicked {
                     val errorNews = News(
                         "The data is broken",
                         "https://www.google.com/",
-                        "https://images.wondershare.com/repairit/aticle/2021/07/resolve-images-not-showing-problem-1.jpg"
+                        "https://images.wondershare.com/repairit/aticle/2021/07/resolve-images-not-showing-problem-1.jpg",
+                        "Not found"
                     )
                     newsItem.add(errorNews)
                 }

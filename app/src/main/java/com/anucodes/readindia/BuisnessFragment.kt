@@ -32,19 +32,21 @@ class BuisnessFragment : Fragment(R.layout.fragment_buisness), NewsAdapter.onIte
 
     private fun getData() {
 
-        val apiUrl = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=e3f69fc7d62142a3ae77afd3a0d070c5"
+        val apiUrl = "https://newsdata.io/api/1/latest?apikey=pub_201840ff62d175f70208810c2460569221e50&q=business"
+        Log.i("The api is: ", apiUrl)
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, apiUrl,
             null,
             { response ->
-                val newsItemArray = response.getJSONArray("articles")
+                val newsItemArray = response.getJSONArray("results")
                 val newsItem = ArrayList<News>()
                 for (i in 0 until newsItemArray.length()) {
                     val newsjsonObject = newsItemArray.getJSONObject(i)
                     val news = News(
                         newsjsonObject.getString("title"),
-                        newsjsonObject.getString("url"),
-                        newsjsonObject.getString("urlToImage")
+                        newsjsonObject.getString("link"),
+                        newsjsonObject.getString("image_url"),
+                        newsjsonObject.getString("source_name")
                     )
                     newsItem.add(news)
                 }
@@ -57,7 +59,8 @@ class BuisnessFragment : Fragment(R.layout.fragment_buisness), NewsAdapter.onIte
                     val errorNews = News(
                         "The data is broken",
                         "https://www.google.com/",
-                        "https://images.wondershare.com/repairit/aticle/2021/07/resolve-images-not-showing-problem-1.jpg"
+                        "https://images.wondershare.com/repairit/aticle/2021/07/resolve-images-not-showing-problem-1.jpg",
+                        "Not found!!"
                     )
                     newsItem.add(errorNews)
                 }
