@@ -2,3 +2,5 @@ The App was made with implemented using the Kotlin+XML and the example of simple
 
 
 ![Screenshot 2024-08-29 231223](https://github.com/user-attachments/assets/8cce455c-f847-4d2c-bd59-269c7b9ba089)
+
+The app also utilizes the Fragments to filter the user preference news.
